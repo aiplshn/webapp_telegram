@@ -1,1 +1,117 @@
-TESTING WEBAPP
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Canva
+    </title>
+    <style>
+        .color {
+          width: 15px;
+          height: 15px;
+          display: inline-block;
+          padding: 1px;
+          cursor: pointer;
+          border: solid 1px #fff;
+        }
+        .color:hover {
+          border: solid 1px #f00;
+        }
+        .color:active {
+          border: solid 1px #ff0;
+        }
+        .button {
+        height: 45px;
+        border: 2px dotted black;
+        background: lightgrey;
+        }
+        #palette, #canvas {
+          display: inline-block;
+          border: solid 1px #aaa;
+          cursor: default;
+          vertical-align: top;
+        }
+        #palette {
+          width: 95px;
+        }
+        #clear {
+          background: #eee;
+          color: #777;
+          padding: 10px;
+          width: 200px;
+          text-align: center;
+          margin: 15px auto;
+          cursor: pointer;
+        }
+        .container {
+           white-space: normal;
+           width: 710px;
+        }
+        </style>
+
+    <script>
+        window.addEventListener("load", function onWindowLoad() {
+                generatePalette(document.getElementById("palette"));
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                context.lineCap = "round";
+                context.lineWidth = 8;
+                document.getElementById("clear").onclick = function clear() {
+                  context.clearRect(0, 0, canvas.width, canvas.height);
+                };
+                canvas.onmousemove = function drawIfPressed (e) {
+                  var x = e.offsetX;
+                  var y = e.offsetY;
+                  var dx = e.movementX;
+                  var dy = e.movementY;
+                  if (e.buttons > 0) {
+                    context.beginPath();
+                    context.moveTo(x, y);
+                    context.lineTo(x - dx, y - dy);
+                    context.stroke();
+                    context.closePath();
+                  }
+                };
+                function generatePalette(palette) {
+                  for (var r = 0, max = 4; r <= max; r++) {
+                    for (var g = 0; g <= max; g++) {
+                      for (var b = 0; b <= max; b++) {
+                        var paletteBlock = document.createElement('div');
+                        paletteBlock.className = 'color';
+                        paletteBlock.addEventListener('click', function changeColor(e) {
+                          context.strokeStyle = e.target.style.backgroundColor;
+                        });
+                        paletteBlock.style.backgroundColor = (
+                          'rgb(' + Math.round(r * 255 / max) + ", "
+                          + Math.round(g * 255 / max) + ", "
+                          + Math.round(b * 255 / max) + ")"
+                        );
+                        palette.appendChild(paletteBlock);
+                      }
+                    }
+                  }
+                }
+            });
+    </script>
+
+</head>
+<body>
+    <div id="main">
+        <h1>Рисовалка</h1>
+        <p>Someone text</p>
+        <button id="apply">Загрузить</button>
+    </div>
+    <div class="container">
+          <canvas id='canvas' width="600" height="600">Ваш браузер устарел!</canvas>
+          <div id="palette"></div>
+          <button id="clear" class="button">Очистить изображение</button>
+          <button id="save" onclick="saveImg()" class="button">Сохранить изображение</button>
+          <span>Толщина</span><input type="range" id="width" min="1" max="20" value="8" step="1">
+        </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</body>
+</html>
