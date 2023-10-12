@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let TG = window.Telegram.WebApp;
   var from_tg = NaN;
   TG.expand();
+  let err_block = document.getElementById('error_message')
+  err_block.textContent = TG.isExpanded;
+  // err_block.textContent = true;
   var currentUrl = window.location.href; // Получаем текущий URL страницы
   var urlParts = currentUrl.split('?');
   var params = {};
