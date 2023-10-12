@@ -7,7 +7,6 @@
 body {
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-bg-color);
-  /* background-color: #f0f0f0; */
   font-family: Arial, sans-serif;
   background-color: var(--tg-theme-secondary-bg-color);
 }
@@ -52,26 +51,18 @@ body {
 }
 
 .container {
-  /* max-width: 80%; */
-  /* height: 90vh; */
   margin: 0 auto;
   background-color: var(--tg-theme-bg-color);
   padding: 5px;
   margin-bottom: 5px;
-  /* background-color: #fff; */
   border-radius: 10px;
 }
 
 .canvas-container {
-  /* height: 64vh; */
-  /* width: 100%; */
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   background-color: var(--tg-theme-bg-color);
-  /* border: 1px solid #333; */
   border-radius: 8px;
-  /* padding: 10px; */
 }
 
 
@@ -81,16 +72,15 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #fff; */
   background-color: var(--tg-theme-bg-color);
   border-top: 1px solid #ccc;
   padding: 10px 0;
   border-radius: 0 0 8px 8px;
+  font-size: medium;
 }
 
 .edit-tools {
   background-color: var(--tg-theme-bg-color);
-  /* color: red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -99,8 +89,6 @@ body {
 
 .tool {
   cursor: pointer;
-  /* background-color: #f8f8f8; */
-  /* color: #333; */
   color: var(--tg-theme-text-color);
   padding: 12px;
   border-radius: 8px;
@@ -117,7 +105,6 @@ body {
 
 .tool.active {
   background-color: var(--tg-theme-button-color);
-  /* color: white; */
   color: var(--tg-theme-text-color);
 }
 
@@ -128,17 +115,18 @@ body {
   color: var(--tg-theme-button-text-color);
   min-width: 200px;
   justify-content: space-between;
+  font-size: x-large;
 }
 
 .button {
   cursor: pointer;
+  margin: 2px;
   background-color: var(--tg-theme-button-color);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
   color: var(--tg-theme-button-text-color);
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  min-width: 50px;
-  text-align: center;
 }
 
 .color-picker {
@@ -156,20 +144,8 @@ body {
 }
 
 .color-history-tool {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--tg-theme-button-color);
-  border: 1px solid var(--tg-theme-button-color);
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 8px; */
   color: var(--tg-theme-button-text-color);
   background: var(--tg-theme-button-color);
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* height: auto; */
   border: none;
   border-radius: 4px;
   padding:  5px;
@@ -184,8 +160,6 @@ body {
   display: none;
   color: var(--tg-theme-button-text-color);
   background: var(--tg-theme-button-color);
-  /* background-color: #f0f0f0; */
-  /* border: 1px solid #ccc; */
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
@@ -223,7 +197,10 @@ body {
 }
 
 .upload-download button:hover {
-  background-color: #555;
+  background: var(--tg-theme-secondary-bg-color);
+}
+
+.button:hover{
   background: var(--tg-theme-secondary-bg-color);
 }
 
@@ -234,13 +211,7 @@ body {
 @media screen and (max-width: 996px) {
   .container {
     margin-top: 10px;
-    max-width: 90%;
-    /* height: 62vw; */
   }
-
-  /* .canvas-container {
-    height: 74%;
-  } */
 
   .tools {
     display: grid;
@@ -269,13 +240,7 @@ body {
 
   .container {
     margin-top: 35px;
-    max-width: 90%;
-    /* height: 100vh; */
   }
-
-  /* .canvas-container {
-    height: 70%;
-  } */
 
   .tools {
     flex-direction: column;
@@ -298,14 +263,6 @@ body {
 }
 
 @media screen and (max-width: 550px) {
-  .container {
-    max-width: 90%;
-  }
-
-  /* .canvas-container {
-    height: 60%;
-  } */
-
   .tools {
     flex-direction: column;
     justify-content: space-around;
@@ -328,14 +285,7 @@ body {
   }
 }
 
-@media screen and (max-width: 360px) {
-  .container {
-    max-width: 70%;
-  }
-
-  /* .canvas-container {
-    height: 50%;
-  } */
+@media screen and (max-width: 440px) {
 
   .edit-tools {
     display: grid;
@@ -345,7 +295,6 @@ body {
 
   .buttons {
     color: var(--tg-theme-button-color);
-    background: var(--tg-theme-button-text-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
