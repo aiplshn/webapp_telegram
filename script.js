@@ -51,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderColorHistory();
     setupColorChangerTool();
     resizeCanvas(NaN);
-    history.push(context.getImageData(0, 0, canvas.width, canvas.height));
     clearDrawing();
+    history.push(context.getImageData(0, 0, canvas.width, canvas.height));
+    historyIndex++;
   }
 
 
@@ -224,9 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (historyIndex < history.length - 1) {
         history.splice(historyIndex + 1);
       }
-
-      history.push(context.getImageData(0, 0, canvas.width, canvas.height));
-      historyIndex++;
     }
   }
 
@@ -235,14 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (drawing) {
       context.closePath();
       drawing = false;
+      saveCanvasState();
     }
   }
 
   function clearDrawing() {
     context.fillStyle = '#fff';
     context.fillRect(0, 0, canvas.width, canvas.height);
-    history = [];
-    historyIndex = -1;
+    saveCanvasState();
     colorHistory.length = 0;
     deactivateColorPickerTool();
   }
@@ -406,8 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           clearDrawing();
           context.drawImage(image, 0, 0, newWidth, newHeight);
-          history.push(context.getImageData(0, 0, canvas.width, canvas.height));
-          historyIndex++;
+          saveCanvasState();
         };
       };
 
