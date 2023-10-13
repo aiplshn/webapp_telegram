@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let TG = window.Telegram.WebApp;
   var from_tg = NaN;
   TG.expand();
-  let err_block = document.getElementById('error_message')
-  err_block.textContent = TG.isExpanded;
-  // err_block.textContent = true;
   var currentUrl = window.location.href; // Получаем текущий URL страницы
   var urlParts = currentUrl.split('?');
   var params = {};
@@ -166,11 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadInput = document.getElementById('upload-input');
     uploadInput.addEventListener('change', handleFileUpload);
 
-    const uploadButton = document.getElementById('upload-button');
-    uploadButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      uploadInput.click();
-    });
+    // const uploadButton = document.getElementById('upload-button');
+    // uploadButton.addEventListener('click', (e) => {
+      // e.stopPropagation();
+      // uploadInput.click();
+    // });
 
     const saveButton = document.getElementById('save-button');
     saveButton.addEventListener('click', saveCanvasImage);
@@ -379,8 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Ошибка при отправке запроса:', error);
       let err_block = document.getElementById('error_message')
-      err_block.textContent = "Ошибка"
-      TG.close();
+      err_block.textContent = "Ошибка";
     });
   }
 
